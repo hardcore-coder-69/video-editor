@@ -18,30 +18,85 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            position: absolute;
+            z-index: 1;
         }
 
         video {
             /* filter: invert(); */
-            /* filter: grayscale(1); */
             filter: grayscale(1) contrast(1.5) brightness(1.2) hue-rotate(180deg);
-            /* filter: brightness(1.1) contrast(1.2) saturate(1.4) sepia(0.2) hue-rotate(-10deg); */
-            /* filter: brightness(1.2) contrast(1.1) saturate(1.5) hue-rotate(45deg); */
+        }
+
+        .subscribe {
+            display: block;
+            position: absolute;
+            z-index: 2;
+            left: 25px;
+            bottom: 30px;
+            height: 50px;
+            width: auto;
+            filter: invert();
+            border-radius: 30px;
+        }
+
+        .frontdrop {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            /* background: #0063ff; */
+            background-color: #00fffe;
+            z-index: 999;
+            opacity: 0.3;
+        }
+
+        .line {
+            display: block;
+            position: absolute;
+            top: 235px;
+            left: 0;
+            height: 5px;
+            width: 100vw;
+            background: #fff;
+            z-index: 2;
+        }
+
+        .line2 {
+            display: block;
+            position: absolute;
+            top: 400px;
+            left: 0;
+            height: 5px;
+            width: 100vw;
+            background: #fff;
+            z-index: 2;
         }
     </style>
 </head>
 
 <body>
 
+    <img src="./assets/subs-image.gif" id="subscribe" class="subscribe">
+
     <video class="fullscreen-video" id="myVideo">
         <source src="./videos/videoplayback.mp4" type="video/mp4">
+
     </video>
+    
+    <!-- <div class="line"></div> -->
+    <!-- <div class="line2"></div> -->
+    <!-- <div class="frontdrop" id="frontdrop"></div> -->
 
     <audio id="myAudio" src="./musics/sad.mp3" loop></audio>
 
     <script>
+        const subscribeBtn = document.getElementById('subscribe');
         const video = document.getElementById("myVideo");
         const audio = document.getElementById('myAudio');
-        video.playbackRate = 1.2;
+        video.playbackRate = 1;
+        video.muted = true;
 
 
         setTimeout(() => {
@@ -50,6 +105,18 @@
         setTimeout(() => {
             video.play();
         }, 5000);
+
+        // setTimeout(() => {
+        //     video.pause();
+        //     subscribeBtn.style.top = '40vh';
+        //     subscribeBtn.style.left = '45vw';
+        //     subscribeBtn.style.display = 'block';
+
+        //     setTimeout(() => {
+        //         subscribeBtn.style.display = 'none';
+        //         video.play();
+        //     }, 10000);
+        // }, 10000)
     </script>
 </body>
 
